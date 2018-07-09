@@ -1,38 +1,38 @@
-//1.Write a program to print the header files used in a source program.
 #include<bits/stdc++.h>
 using namespace std;
 
 int main()
 {
-    FILE *p1, *p2;
+    FILE *fp1, *fp2;
     char c;
+    char *input = "input.c";
+    char *output = "output.txt";
 
-    p1 = fopen("input.c", "r");
-    p2 = fopen("output.txt", "w");
+    fp1 = fopen(input, "r");
+    fp2 = fopen(output, "w");
 
-    if(!p1)printf("File can't be found");
+    if(!fp1)printf("File can't be found");
     else
     {
-        while((c = fgetc(p1)) != EOF)
+        while((c = fgetc(fp1)) != EOF)
         {
             if(c == '<')
             {
                 while(c != '>')
                 {
-                    c = fgetc(p1);
-                    if(c != '>') fputc(c, p2);
+                    c = fgetc(fp1);
+                    if(c != '>') fputc(c, fp2);
                 }
-                fputc('\n',p2);
             }
         }
     }
-    fclose(p1);
-    fclose(p2);
+    fclose(fp1);
+    fclose(fp2);
 
-    p2 = fopen("output.txt", "r");
+    fp2 = fopen(output, "r");
     //while((c=fgetc(fp2)) != EOF) printf("%c", c);
-    while((c=fgetc(p2)) != EOF) cout << c;
-    fclose(p2);
+    while((c=fgetc(fp2)) != EOF) cout << c;
+    fclose(fp2);
 
     return 0;
 }
