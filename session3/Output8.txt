@@ -1,0 +1,7 @@
+x1      float
+f1      double
+x       int
+z       double
+main    int
+n1      int
+z       double
